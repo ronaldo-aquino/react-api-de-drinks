@@ -26,9 +26,9 @@ const Formulario = () => {
                     <select name="categoria" className="form-control">
                         <option value="">-- Seleciona categoria</option>
                         {
-                            categorias.map((categoria, index) => (
-                            <option value="" key={index}>
-                                {categoria}
+                            categorias.map((categoria) => (
+                            <option value={categoria.strCategory} key={categoria.strCategory}>
+                                {categoria.strCategory}
                             </option>
                             ))
                         }
