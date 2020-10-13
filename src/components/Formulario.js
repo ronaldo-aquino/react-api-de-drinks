@@ -3,8 +3,8 @@ import { CategoriasContext } from "../context/CategoriasContext";
 
 const Formulario = () => {
 
-    const { ola } = useContext(CategoriasContext)
-
+    const { categorias } = useContext(CategoriasContext)
+    console.log(categorias)
     return (
         <>
         <form className="col-12">
@@ -25,6 +25,13 @@ const Formulario = () => {
                 <div className="col-md-4">
                     <select name="categoria" className="form-control">
                         <option value="">-- Seleciona categoria</option>
+                        {
+                            categorias.map((categoria, index) => (
+                            <option value="" key={index}>
+                                {categoria}
+                            </option>
+                            ))
+                        }
                     </select>
                 </div>
 
@@ -34,7 +41,6 @@ const Formulario = () => {
 
             </div>
         </form>
-        {ola}
         </>
     );
 };
