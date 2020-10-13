@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CategoriasContext } from "../context/CategoriasContext";
 
 const Formulario = () => {
+
+    const { ola } = useContext(CategoriasContext)
+
     return (
+        <>
         <form className="col-12">
             <fieldset className="text-center">
                 <legend>Busca de bebidas por categoria ou ingredientes.</legend>
@@ -29,6 +34,8 @@ const Formulario = () => {
 
             </div>
         </form>
+        {ola}
+        </>
     );
 };
 
