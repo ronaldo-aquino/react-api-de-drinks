@@ -32,6 +32,7 @@ const ReceitasProvider = (props) => {
             value={{
                 setBuscaReceita,
                 setConsultar,
+                receitas,
             }}
         >
             {props.children}
