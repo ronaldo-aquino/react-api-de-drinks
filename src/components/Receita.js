@@ -41,7 +41,8 @@ const Receita = ({ receita }) => {
     };
 
     // Extrair os valores do context
-    const { setIdReceita } = useContext(ModalContext);
+    const { setIdReceita, receitaPorId, setReceitaPorId } = useContext(ModalContext);
+    const { strDrink, strInstructions, strDrinkThumb } = receitaPorId;
 
     return (
         <div className="col-md-4 mb-3">
@@ -64,16 +65,19 @@ const Receita = ({ receita }) => {
                         Ver Receita
                     </button>
 
-                    <Modal 
-                        open={open} 
+                    <Modal
+                        open={open}
                         onClose={() => {
-                            setIdReceita(null)
-                            handleClose()
+                            setIdReceita(null);
+                            setReceitaPorId({})
+                            handleClose();
                         }}
-                        
                     >
                         <div style={modalStyle} className={classes.paper}>
-                            <h1>A partir do modar</h1>
+                            <h2>{strDrink}</h2>
+                            <h3 className="mt-4">Intruções</h3>
+                            <p>{strInstructions}</p>
+                            <img src={strDrinkThumb} alt="" className="img-fluid my-4"/>
                         </div>
                     </Modal>
                 </div>
