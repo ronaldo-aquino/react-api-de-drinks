@@ -41,8 +41,27 @@ const Receita = ({ receita }) => {
     };
 
     // Extrair os valores do context
-    const { setIdReceita, receitaPorId, setReceitaPorId } = useContext(ModalContext);
+    const { setIdReceita, receitaPorId, setReceitaPorId } = useContext(
+        ModalContext
+    );
     const { strDrink, strInstructions, strDrinkThumb } = receitaPorId;
+
+    // Mostrar e formatar os ingredientes
+    const mostrarIngredientes = (receitaPorId) => {
+        let ingredientes = [];
+        for (let i = 1; i < 16; i++) {
+            if (receitaPorId[`strIngredient${i}`]) {
+                ingredientes.push(
+                    <li>
+                        {receitaPorId[`strIngredient${i}`]}
+                        {receitaPorId[`strMeasure${i}`]}
+                    </li>
+                );
+            }
+        }
+
+        return ingredientes;
+    };
 
     return (
         <div className="col-md-4 mb-3">
@@ -69,7 +88,7 @@ const Receita = ({ receita }) => {
                         open={open}
                         onClose={() => {
                             setIdReceita(null);
-                            setReceitaPorId({})
+                            setReceitaPorId({});
                             handleClose();
                         }}
                     >
@@ -77,7 +96,13 @@ const Receita = ({ receita }) => {
                             <h2>{strDrink}</h2>
                             <h3 className="mt-4">Intruções</h3>
                             <p>{strInstructions}</p>
-                            <img src={strDrinkThumb} alt="" className="img-fluid my-4"/>
+                            <img
+                                src={strDrinkThumb}
+                                alt=""
+                                className="img-fluid my-4"
+                            />
+                            <h3>Ingredientes e Quantidades</h3>
+                            <ul>{mostrarIngredientes(receitaPorId)}</ul>
                         </div>
                     </Modal>
                 </div>
